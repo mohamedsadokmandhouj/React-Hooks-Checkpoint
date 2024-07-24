@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import StarRatingComponent from 'react-star-rating-component';
 
 function Moviecard({ movie }) {
@@ -20,7 +21,7 @@ function Moviecard({ movie }) {
                             starCount={5} /* number of icons in rating, default `5` */
                         />
                     </div>
-                    <Button variant="primary">Play</Button>
+                    <Button variant="primary"> <Link to={`/movie/${movie.id}`} >  Play </Link></Button>
                 </Card.Body>
             </Card>
         </div>

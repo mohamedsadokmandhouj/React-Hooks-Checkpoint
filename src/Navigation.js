@@ -9,7 +9,7 @@ function Navigation() {
             <Navbar >
                 <Container>
                     <Navbar.Brand href="#home">
-                     <h2 className='color' >netflix</h2>   
+                     <h2 className='color' >Netflix</h2>   
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
