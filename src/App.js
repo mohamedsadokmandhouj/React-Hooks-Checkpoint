@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MovieDetails from './MovieDetails';
+import AddMovie from './AddMovie';
 
 function App() {
   const [movieList, setMovieList] = useState([
@@ -91,6 +92,17 @@ function App() {
     },
   ]);
 
+
+  const [searchInput , setSearchInput] = useState("")
+  const [rateInput , setRateInput] = useState(1)
+
+
+  const addNewMovie = (movie) => {
+    setMovieList([
+      ...movieList , movie
+    ])
+  }
+
   const [searchinput, setsearchinput] = useState("")
 
   const handlesearch = (text) => {
@@ -103,26 +115,21 @@ function App() {
   }
 
   return (
-
     <div className="App">
       <Navigation />
       <Filter search={handlesearch} rateinput={handlerateinput} />
-
+      <div className='my-3 text-end me-5' >
+        <AddMovie addNewMovie={addNewMovie} />
+      </div>
       <Routes>
         <Route
-          path='/' element={<Movislist data={movieList.filter((elm) => elm.title.toLowerCase().includes(searchinput.toLowerCase().trim()) && elm.rating >= rateinput)} />}
-
+          path='/'
+          element={<Movislist data={movieList.filter((elm) => elm.title.toLowerCase().includes(searchinput.toLowerCase().trim()) && elm.rating >= rateinput)} />}
         />
-
-        <Route path='/movie/:id' element={< MovieDetails movielist={movieList} />} />
-
+        <Route path='/movie/:id' element={<MovieDetails movielist={movieList} />} />
         <Route path='*' element={<h1> not found </h1>} />
-
-
       </Routes>
-
     </div>
-
   );
 }
 
